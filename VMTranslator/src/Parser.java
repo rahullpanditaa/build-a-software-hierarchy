@@ -54,6 +54,13 @@ public class Parser {
         }
     }
 
+    public String arg1() {
+        CommandType currentCommandType = commandType();
+        if (currentCommandType == CommandType.C_ARITHMETIC) { return currentCommand; }
+        else {
+            String[] s = currentCommand.split(" ");
+            return s[1];
+    }
 
 
 
