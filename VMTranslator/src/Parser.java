@@ -55,13 +55,19 @@ public class Parser {
     }
 
     public String arg1() {
-        CommandType currentCommandType = commandType();
-        if (currentCommandType == CommandType.C_ARITHMETIC) { return currentCommand; }
-        else {
+        CommandType currentCommandType = commandType();  // redundant
+        if (currentCommandType == CommandType.C_ARITHMETIC) {
+            return currentCommand;
+        } else {
             String[] s = currentCommand.split(" ");
             return s[1];
+        }
     }
 
-
-
+    public int arg2() {
+        CommandType currentCmndType = commandType();
+        if (currentCmndType == CommandType.C_POP || currentCmndType == CommandType.C_PUSH) {
+            return Integer.parseInt(currentCommand.split(" ")[2]);
+        }
+    }
 }
