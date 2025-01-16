@@ -38,6 +38,22 @@ public class Parser {
         }
     }
 
+    public CommandType commandType() {
+        String[] arithmeticCommands = {"add", "sub", "neg", "eq", "gt", "lt", "and", "or", "not"};
+        for (String arithmeticCommand : arithmeticCommands) {
+            if (currentCommand.startsWith(arithmeticCommand)) {
+                return CommandType.C_ARITHMETIC;
+            }
+        }
+        if (currentCommand.startsWith("push")) {
+            return CommandType.C_PUSH;
+        } else if (currentCommand.startsWith("pop")) {
+            return CommandType.C_POP;
+        } else {
+            throw new RuntimeException("Invalid command. Current version of VM Translator only supports Arithmetic and Memory segment commands");
+        }
+    }
+
 
 
 
