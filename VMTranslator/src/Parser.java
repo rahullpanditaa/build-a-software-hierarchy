@@ -69,5 +69,6 @@ public class Parser {
         if (currentCmndType == CommandType.C_POP || currentCmndType == CommandType.C_PUSH) {
             return Integer.parseInt(currentCommand.split(" ")[2]);
         }
+        throw new RuntimeException("VM Translator can currently accept only arithmetic and memory segment commands");
     }
 }
