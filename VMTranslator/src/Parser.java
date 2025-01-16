@@ -26,6 +26,18 @@ public class Parser {
         }
     }
 
+    // reads next command from input, makes it current command
+    String currentCommand;
+    public void advance() {
+        if (this.hasMoreCommands()) {   // need to create a helper method to delete/ignore inline comments
+            try {
+                currentCommand = reader.readLine();  // 1st time -> reads the 1st command in vm file
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
 
 
 
